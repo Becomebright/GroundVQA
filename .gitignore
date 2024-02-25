@@ -1,3 +1,11 @@
+# Custom
+data/
+lightning_logs
+utils/generate_open_qa/tmp
+utils/generate_close_qa/tmp
+*.pkl
+*.json
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

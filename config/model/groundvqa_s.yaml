@@ -1,0 +1,4 @@
+_target_: model.ours.model.GroundVQA
+lm_path: google/flan-t5-small
+input_dim: ${dataset.feature_dim}
+freeze_word: True

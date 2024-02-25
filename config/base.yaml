@@ -1,0 +1,40 @@
+defaults:
+  - dataset: egovlp_internvideo
+  - model: groundvqa_s
+  - _self_
+  - override hydra/job_logging: none
+  - override hydra/hydra_logging: none
+
+trainer:
+  detect_anomaly: True
+  max_epochs: 100
+  accumulate_grad_batches: 1
+  auto_resume: False
+  gpus: 1
+  log_every_n_steps: 1
+  auto_lr_find: False
+  enable_progress_bar: True
+  monitor_variable: val_ROUGE
+  monitor_mode: max
+  find_unused_parameters: False
+  precision: bf16
+  val: False  # test on the val set
+  gradient_clip_val: 1.0
+  save_nlq_results: null
+  deterministic: True
+  load_decoder: True
+  load_nlq_head: True
+  ignore_existing_checkpoints: True
+  
+optim:
+  optimizer:
+    _target_: torch.optim.AdamW
+    lr: 0.0001
+    weight_decay: 0.0
+  freeze: [ ]
+  lr_scheduler: False
+
+hydra:
+  run:
+    dir: .
+  output_subdir: null

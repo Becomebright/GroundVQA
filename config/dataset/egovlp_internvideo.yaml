@@ -1,0 +1,15 @@
+data_dir: data/unified
+nlq_val_anno: data/nlq_v2/nlq_val.json
+feature_type: egovlp_internvideo
+feature_dim: 2304
+max_v_len: 1200
+
+qa_train_splits: []
+nlq_train_splits: []
+test_splits: ['QaEgo4D_test', 'QaEgo4D_test_close', 'NLQ_val']
+closeqa_weight: 50
+
+tokenizer_path: google/flan-t5-small
+
+num_workers: 4
+batch_size: 16

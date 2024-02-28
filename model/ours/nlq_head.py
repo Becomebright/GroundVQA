@@ -528,8 +528,6 @@ class NLQHead(nn.Module):
         super().__init__()
         self.train_center_sample = 'radius'
         self.train_center_sample_radius = 1.5
-        # self.train_center_sample_radius = 3.0
-        # self.train_center_sample_radius = 9.0
         self.train_loss_weight = 1.0
         self.train_cls_prior_prob = 0.01
         self.train_label_smoothing = 0.1

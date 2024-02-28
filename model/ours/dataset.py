@@ -167,7 +167,6 @@ class JointDataset(ConcatDataset):
         
         answer = [b['answer'] for b in batch]
         labels = self.tokenizer(answer, padding=True, return_tensors='pt').input_ids
-        # labels[labels == self.tokenizer.pad_token_id] = -100  # BUG
         # NOTE: NLQ data does not have an answer
         for idx, a in enumerate(answer):
             if a == 'None':

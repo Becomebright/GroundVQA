@@ -1,10 +1,12 @@
 # GroundVQA
 
-Official PyTorch code of "Grounded Question-Answering in Long Egocentric Videos".
+Official PyTorch code of "Grounded Question-Answering in Long Egocentric Videos", *CVPR* 2024.
 
 [[Project page]](https://dszdsz.cn/GroundVQA/index.html) [[Paper]](https://arxiv.org/abs/2312.06505)
 
-The release is expected in two weeks.
+## News
+
+[Feb 2024] We update the CloseQA test set with rigorous human verification. The benchmark results will be updated in our paper shortly.
 
 ## Abstract
 
@@ -49,14 +51,14 @@ Our setup: Ubuntu 20.04, CUDA 12.2, 8x Nvidia A100 (80GB)
   - **video feature:** merge the files `cat egovlp_internvideoa* > egovlp_internvideo.hdf5` and put it under `data/unified/`
   - **model checkpoints**: put them under `checkpoints/`
 
-| Model                           | Data                                                         | Task                   | NLQ$`_\texttt{v2}`$                                          | QaEgo4D                                                      | Cost (Gh)$`^{*}`$ |
+| Model                           | Data                                                         | Task                   | NLQ$`_\texttt{v2}`$                                          | QaEgo4D                                                      | Cost$`^{*}`$ |
 | ------------------------------- | ------------------------------------------------------------ | ---------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ----------------- |
-| $`\text{GroundVQA}_\texttt{S}`$ | QaEgo4D                                                      | CloseQA + OpenQA + VLG | [[val_R1_03=11.0]](https://huggingface.co/Becomebright/GroundVQA/blob/main/GroundVQA_S-QaEgo4D-COV-val_R1_03%3D11.0.ckpt) | [[test_ROUGE=29.0]](https://huggingface.co/Becomebright/GroundVQA/blob/main/GroundVQA_S-QaEgo4D-COV-test_ROUGE%3D29.0.ckpt) | 7 Gh              |
-| $`\text{GroundVQA}_\texttt{S}`$ | QaEgo4D + EgoTimeQA                                          | CloseQA + OpenQA + VLG | [[val_R1_03=23.3]](https://huggingface.co/Becomebright/GroundVQA/blob/main/GroundVQA_S-QaEgo4D_EgoTimeQA-COV-val_R1_03%3D23.3.ckpt) | [[test_ROUGE=30.2]](https://huggingface.co/Becomebright/GroundVQA/blob/main/GroundVQA_S-QaEgo4D_EgoTimeQA-COV-test_ROUGE%3D30.2.ckpt) | 150 Gh            |
-| $`\text{GroundVQA}_\texttt{B}`$ | QaEgo4D + EgoTimeQA                                          | CloseQA + OpenQA + VLG | [[val_R1_03=25.6]](https://huggingface.co/Becomebright/GroundVQA/blob/main/GroundVQA_B-QaEgo4D_EgoTimeQA-COV-val_R1_03%3D25.6.ckpt) | [[test_ROUGE=30.4]](https://huggingface.co/Becomebright/GroundVQA/blob/main/GroundVQA_B-QaEgo4D_EgoTimeQA-COV-test_ROUGE%3D30.4.ckpt) | 350 Gh            |
-| $`\text{GroundVQA}_\texttt{B}`$ | NLQ$`_\texttt{v2}`$ + NaQ $\rightarrow$ NLQ$`_\texttt{v2}`$$`^{**}`$ | VLG                    | [[val_R1_03=29.7]](https://huggingface.co/Becomebright/GroundVQA/blob/main/GroundVQA_B-NLQ_NaQ-finetune_NLQ-VLG-val_R1_03%3D29.7.ckpt) | -                                                            | 700 Gh            |
+| $`\text{GroundVQA}_\texttt{S}`$ | QaEgo4D                                                      | CloseQA+OpenQA+VLG | [[val_R1_03=11.0]](https://huggingface.co/Becomebright/GroundVQA/blob/main/GroundVQA_S-QaEgo4D-COV-val_R1_03%3D11.0.ckpt) | [[test_ROUGE=29.0]](https://huggingface.co/Becomebright/GroundVQA/blob/main/GroundVQA_S-QaEgo4D-COV-test_ROUGE%3D29.0.ckpt) | 7              |
+| $`\text{GroundVQA}_\texttt{S}`$ | QaEgo4D+EgoTimeQA                                          | CloseQA+OpenQA+VLG | [[val_R1_03=23.3]](https://huggingface.co/Becomebright/GroundVQA/blob/main/GroundVQA_S-QaEgo4D_EgoTimeQA-COV-val_R1_03%3D23.3.ckpt) | [[test_ROUGE=30.2]](https://huggingface.co/Becomebright/GroundVQA/blob/main/GroundVQA_S-QaEgo4D_EgoTimeQA-COV-test_ROUGE%3D30.2.ckpt) | 150            |
+| $`\text{GroundVQA}_\texttt{B}`$ | QaEgo4D+EgoTimeQA                                          | CloseQA+OpenQA+VLG | [[val_R1_03=25.6]](https://huggingface.co/Becomebright/GroundVQA/blob/main/GroundVQA_B-QaEgo4D_EgoTimeQA-COV-val_R1_03%3D25.6.ckpt) | [[test_ROUGE=30.4]](https://huggingface.co/Becomebright/GroundVQA/blob/main/GroundVQA_B-QaEgo4D_EgoTimeQA-COV-test_ROUGE%3D30.4.ckpt) | 350            |
+| $`\text{GroundVQA}_\texttt{B}`$ | NLQ$`_\texttt{v2}`$+NaQ $\rightarrow$ NLQ$`_\texttt{v2}`$$`^{**}`$ | VLG                    | [[val_R1_03=29.7]](https://huggingface.co/Becomebright/GroundVQA/blob/main/GroundVQA_B-NLQ_NaQ-finetune_NLQ-VLG-val_R1_03%3D29.7.ckpt) | -                                                            | 700            |
 
-\* "Gh" stands for GPU hours.
+\* The training costs counted by GPU hours.
 
 ** Pre-trained on NLQ$`_\texttt{v2}`$ and NaQ, and further fine-tuned on NLQ$`_\texttt{v2}`$​.
 
@@ -91,11 +93,11 @@ bash scripts/evaluate_groundvqa_b-nlq_naq.sh
 
 ## Generate OpenQA data
 
-Download the processed narrations [[em_train_narrations.pkl]](https://huggingface.co/Becomebright/GroundVQA/blob/main/em_train_narrations.pkl)
+Download the processed Ego4D narrations [[em_train_narrations.pkl]](https://huggingface.co/Becomebright/GroundVQA/blob/main/em_train_narrations.pkl)
 
-Put it under `utils/generate_open_qa`
+Put it under `utils/generate_open_qa/`
 
-Generate in parallel on multiple GPUs (*e.g.*, 2)
+Generate QAs in parallel on multiple GPUs (*e.g.*, 2)
 
 ```bash
 cd utils/generate_open_qa
@@ -104,10 +106,10 @@ cd utils/generate_open_qa
 CUDA_VISIBLE_DEVICES=0 python generate.py -start 0 -end 5000
 
 # GPU-1
-CUDA_VISIBLE_DEVICES=0 python generate.py -start 5000 -end 11000  # 10777 clips in total
+CUDA_VISIBLE_DEVICES=1 python generate.py -start 5000 -end 11000  # 10777 clips in total
 ```
 
-Merge the generation results and normalize the duration of temporal windows
+Merge the results and normalize the duration of temporal windows
 
 ```bash
 python merge.py
@@ -127,11 +129,11 @@ You can also conduct generation on multiple GPUs or generate wrong answers for Q
 ## Citation
 
 ```latex
-@article{di2023groundvqa,
+@inproceedings{di2023groundvqa,
   title={Grounded Question-Answering in Long Egocentric Videos},
   author={Di, Shangzhe and Xie, Weidi},
-  journal={arXiv preprint arXiv:2312.06505},
-  year={2023}
+  booktitle={CVPR},
+  year={2024}
 }
 ```
 

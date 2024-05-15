@@ -912,7 +912,8 @@ class NLQHead(nn.Module):
                 )
             # 3: convert from feature grids to seconds
             if segs.shape[0] > 0:
-                segs_sec = (segs * stride + 0.5 * nframes) / fps
+                # segs_sec = (segs * stride + 0.5 * nframes) / fps
+                segs_sec = segs * stride / fps  # use_offset=False
                 # truncate all boundaries within [0, duration]
                 segs_sec[segs_sec <= 0.0] *= 0.0
                 segs_sec[segs_sec >= vlen] = segs_sec[segs_sec >= vlen] * 0.0 + vlen

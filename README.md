@@ -6,6 +6,8 @@ Official PyTorch code of "Grounded Question-Answering in Long Egocentric Videos"
 
 ## News
 
+[Apr 2024] We have updated the CloseQA benchmarking results, now available on [arXiv [v4]](https://arxiv.org/pdf/2312.06505).
+
 [Feb 2024] We update the CloseQA test set with rigorous human verification. The benchmark results will be updated in our paper shortly.
 
 ## Abstract
